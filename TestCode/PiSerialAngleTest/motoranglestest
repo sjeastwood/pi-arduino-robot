@@ -5,10 +5,19 @@ import time
 
 
 arduinoser = serial.Serial('/dev/ttyACM0', 9600)
+go = "Ready!"
 
+string1 = "120,60,135,90,45,150;"
+string2 = "160,28,80,75,112,135;"
+string3 = "90,120,45,38,27,180;"
+
+time.sleep(2)
 
 while True:
-        
-        time.sleep(1)        
-	arduinoser.write('120,60,135,90,45,150;')
-
+         
+	arduinoser.write(string1)
+        time.sleep(1)
+        arduinoser.write(string2)
+        time.sleep(1)
+        arduinoser.write(string3)
+        time.sleep(1)
