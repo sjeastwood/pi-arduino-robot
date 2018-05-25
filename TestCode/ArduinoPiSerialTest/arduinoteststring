@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+import serial
+import time
+
+
+arduinoser = serial.Serial('/dev/ttyACM0', 9600)
+
+
+while True:
+        
+        time.sleep(5)
+	arduinoser.write('Hello Arduino. ')
+ #       time.sleep(1)
+	arduinoser.write('This is from Raspberry Pi.\n')
+

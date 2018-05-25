@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import serial
+
+arduinoser = serial.Serial('/dev/ttyACM0', 9600)
+
+while True:
+
+	if arduinoser.inWaiting() > 0 :
+		myData = arduinoser.readline()
+		print myData
+
+

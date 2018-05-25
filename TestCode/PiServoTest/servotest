@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+
+import RPi.GPIO as GPIO
+
+from time import sleep
+
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(03, GPIO.OUT)
+pwm = GPIO.PWM(03, 50)
+
+pwm.start(0)
+
+
+def SetAngle(angle):
+	duty = angle / 20 + 2
+	GPIO.output(03, True)
+	pwm.ChangeDutyCycle(duty)
+	sleep(5)
+	GPIO.output(03, False)
+	pwm.ChangeDutyCycle(0)
+
+print("0 degrees")
+SetAngle(0)
+print("90 degrees")
+SetAngle(90)
+print("0 degrees")
+SetAngle(0)
+print("180 degrees")
+SetAngle(180)
+print("0 degrees")
+SetAngle(0)
+print("140 degrees")
+SetAngle(140)
+print("60 degrees")
+SetAngle(60)
+print("0 degrees")
+SetAngle(0)
+print("45 degrees")
+SetAngle(45)
+print("0 degrees")
+SetAngle(0)
+print("120 degrees")
+SetAngle(120)
+print("30 degrees")
+SetAngle(30)
+print("180 degrees")
+SetAngle(180)
+print("45 degrees")
+SetAngle(45)
+print("0 degrees")
+SetAngle(0)
+
+pwm.stop()
+GPIO.cleanup()
+
+
+	
+
