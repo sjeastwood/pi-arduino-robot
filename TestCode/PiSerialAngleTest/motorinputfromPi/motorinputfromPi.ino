@@ -23,7 +23,7 @@ void loop(){
   char ending = ';';
   char separator = ',';
  
-  //Serial.println("Ready!");
+  Serial.println("Ready!");
 
   
   while (Serial.available() > 0 && finished == false){
@@ -54,7 +54,7 @@ void loop(){
 
 
   if (finished) {
-    //Serial.print("Transfer complete!\n");
+    Serial.print("Transfer complete!\n");
     Serial.print("The received angles are: ");
     Serial.println(fromPi);
 
@@ -74,6 +74,7 @@ void loop(){
     
     }
 
+    /*
     Serial.print("First motor angle: ");
     Serial.print(motor[0]);
     Serial.print("\n");
@@ -97,7 +98,7 @@ void loop(){
     Serial.print("Sixth motor angle: ");
     Serial.print(motor[5]);
     Serial.print("\n");
-
+    */
   }
 
   finished = false;

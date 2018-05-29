@@ -6,18 +6,54 @@ import time
 
 arduinoser = serial.Serial('/dev/ttyACM0', 9600)
 go = "Ready!"
+done = "Transfer complete!"
+
 
 string1 = "120,60,135,90,45,150;"
 string2 = "160,28,80,75,112,135;"
 string3 = "90,120,45,38,27,180;"
 
+
+print("Establishing Serial Connection....")
 time.sleep(2)
+print("Connection Established!")
+
+
+#while True:
+#         
+#	arduinoser.write(string1)
+#       time.sleep(1)
+#       arduinoser.write(string2)
+#       time.sleep(1)
+#       arduinoser.write(string3)
+#       time.sleep(1)
+
 
 while True:
-         
-	arduinoser.write(string1)
-        time.sleep(1)
-        arduinoser.write(string2)
-        time.sleep(1)
-        arduinoser.write(string3)
-        time.sleep(1)
+        message = arduinoser.readline()
+
+        if message == go:
+                print(message)
+                arduinoser.write(string1)
+        #        time.sleep(1) #give time to complete transfer
+
+        if message == done:
+                print(message)
+                break
+
+
+ while True:
+        message = arduinoser.readline()
+
+        if message == go:
+                print(message)
+                arduinoser.write(string2)
+
+        if message == done:
+                print(message)
+                break
+
+
+
+
+
