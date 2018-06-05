@@ -1,25 +1,49 @@
+#include <Servo.h>
+
+Servo myservo;
+
+int servopin = 3;
 
 const byte maxSerial = 24;
 char fromPi[maxSerial];
 
 int motor[6];
 
-int index[5];
-
-
 boolean finished = false;
 
 void setup(){
   Serial.begin(9600);
-
+  myservo.attach(servopin);
+  motorReset();
 }
 
 void loop(){
 
   Serial.println("Ready!");
+  while (Serial.available() == 0) {} //do nothing while waiting for input
+  
   readSerial();
   parseSerial();
 
+  moveServo(motor[0]);
+  delay(1000);
+  
+  moveServo(motor[1]);
+  delay(1000);
+  
+  moveServo(motor[2]);
+  delay(1000);
+  
+  moveServo(motor[3]);
+  delay(1000);
+  
+  moveServo(motor[4]);
+  delay(1000);
+  
+  moveServo(motor[5]);
+  delay(1000);
+  
+  
   //delay(1000);
 }
 
@@ -114,7 +138,21 @@ void readSerial(){
       
         finished = false;
   
-  
-  
   }
 
+
+void moveServo(int input) {
+  
+  Serial.print("Moving servo ");
+  Serial.print(input);
+  Serial.print(" degrees...");
+  myservo.write(input);
+  Serial.print("Done!\n");
+}
+
+void motorReset() {
+
+    Serial.print("Resetting Servo to 0 degrees.\n");
+    myservo.write(0);
+
+}

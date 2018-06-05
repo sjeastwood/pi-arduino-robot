@@ -56,7 +56,10 @@ print("Connection Established!")
  """
 
 arduinoser.write(string1)
-
+time.sleep(10)
+arduinoser.write(string2)
+time.sleep(10)
+arduinoser.write(string3)
 
 
 
