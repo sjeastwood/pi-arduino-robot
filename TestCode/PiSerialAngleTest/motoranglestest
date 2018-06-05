@@ -19,17 +19,17 @@ time.sleep(2)
 print("Connection Established!")
 
 
-#while True:
-#         
-#	arduinoser.write(string1)
-#       time.sleep(1)
-#       arduinoser.write(string2)
-#       time.sleep(1)
-#       arduinoser.write(string3)
-#       time.sleep(1)
+""" while True:
+         
+	arduinoser.write(string1)
+       time.sleep(1)
+       arduinoser.write(string2)
+       time.sleep(1)
+       arduinoser.write(string3)
+       time.sleep(1)
+ """
 
-
-while True:
+""" while True:
         message = arduinoser.readline()
 
         if message == go:
@@ -53,6 +53,9 @@ while True:
                 print(message)
                 break
 
+ """
+
+arduinoser.write(string1)
 
 
 
