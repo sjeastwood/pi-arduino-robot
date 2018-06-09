@@ -14,6 +14,7 @@ Servo servo2;
 Servo servo3;
 Servo servo4;
 Servo servo5;
+Servo servo6;
 
 int servo1pin = 3;
 int servo2pin = 5;
@@ -36,12 +37,14 @@ void setup(){
   servo3.attach(servo3pin);
   servo4.attach(servo4pin);
   servo5.attach(servo5pin);
+  servo6.attach(servo6pin);
   
   motorReset(servo1);
   motorReset(servo2);
   motorReset(servo3);
   motorReset(servo4);
   motorReset(servo5);
+  motorReset(servo6);
 }
 
 void loop(){
@@ -57,6 +60,7 @@ void loop(){
   moveServo(servo3,motor[0]);
   moveServo(servo4,motor[0]);
   moveServo(servo5,motor[0]);
+  moveServo(servo6,motor[0]);
   delay(1000);
   
   moveServo(servo1,motor[1]);
@@ -64,6 +68,7 @@ void loop(){
   moveServo(servo3,motor[1]);
   moveServo(servo4,motor[1]);
   moveServo(servo5,motor[1]);
+  moveServo(servo6,motor[1]);
   delay(1000);
   
   moveServo(servo1,motor[2]);
@@ -71,6 +76,7 @@ void loop(){
   moveServo(servo3,motor[2]);
   moveServo(servo4,motor[2]);
   moveServo(servo5,motor[2]);
+  moveServo(servo6,motor[2]);
   delay(1000);
   
   moveServo(servo1,motor[3]);
@@ -78,6 +84,7 @@ void loop(){
   moveServo(servo3,motor[3]);
   moveServo(servo4,motor[3]);
   moveServo(servo5,motor[3]);
+  moveServo(servo6,motor[3]);
   delay(1000);
   
   moveServo(servo1,motor[4]);
@@ -85,6 +92,7 @@ void loop(){
   moveServo(servo3,motor[4]);
   moveServo(servo4,motor[4]);
   moveServo(servo5,motor[4]);
+  moveServo(servo6,motor[4]);
   delay(1000);
   
   moveServo(servo1,motor[5]);
@@ -92,7 +100,9 @@ void loop(){
   moveServo(servo3,motor[5]);
   moveServo(servo4,motor[5]);
   moveServo(servo5,motor[5]);
+  moveServo(servo6,motor[5]);
   delay(1000);
+
   
   
   //delay(1000);

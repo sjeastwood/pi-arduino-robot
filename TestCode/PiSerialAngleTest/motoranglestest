@@ -55,10 +55,13 @@ print("Connection Established!")
 
  """
 
+print("Sending motor co-ordinates " + string1 + "\n")
 arduinoser.write(string1)
 time.sleep(10)
+print("Sending motor co-ordinates " + string2 + "\n")
 arduinoser.write(string2)
 time.sleep(10)
+print("Sending motor co-ordinates " + string3 + "\n")
 arduinoser.write(string3)
 
 
