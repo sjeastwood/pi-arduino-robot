@@ -14,7 +14,7 @@ Using I2C interface to send data to the Arduino
 
 ### Planned Robot Stages
 
-1.Manually moving robot by providing angle of rotation to the motors
+1. Manually moving robot by providing angle of rotation to the motors
 
 2. Utilising keyboard/joystick for moving and selection of motors
 
