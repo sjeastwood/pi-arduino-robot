@@ -1,4 +1,4 @@
-# pi-arduino-robot
+# Pi Arduino Robot
 
 ## Overview
 Code for a Raspberry Pi intereacting with six servo motors attached to an arduino.
