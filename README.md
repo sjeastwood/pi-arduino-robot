@@ -17,9 +17,9 @@ Using I2C interface to send data to the Arduino
 
 ### Planned Robot Stages
 
-1. Manually moving robot by providing angle of rotation to the motors
+1. Manually moving robot by providing angle of rotation to the motors through python script on raspberry pi
 
-2. Utilising keyboard/joystick for moving and selection of motors
+2. Utilising keyboard and/or joystick + buttons for moving and selecting of motors
 
 3. Using OpenCV to automate Robot
 
