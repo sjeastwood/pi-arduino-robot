@@ -5,7 +5,7 @@ import numpy as np
 image = cv2.imread("face.jpg", 1)
 
 #Load a cascade file for detecting faces
-face_cascade = cv2.CascadeClassifier('/home/pi/opencv-3.4.3/data/haarcascades/haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('/home/pi/opencv-3.4.3/data/haarcascades/haarcascade_frontalface_alt2.xml')
 
 #Convert to grayscale
 gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
