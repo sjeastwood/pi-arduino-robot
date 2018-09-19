@@ -17,3 +17,4 @@ https://becominghuman.ai/autonomous-racing-robot-with-an-arduino-a-raspberry-pi-
 OpenCV:
 
 https://www.raspberrypi.org/forums/viewtopic.php?t=85755
+http://funvision.blogspot.com/2017/01/lbp-cascade-for-head-and-people.html
