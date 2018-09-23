@@ -18,3 +18,13 @@ OpenCV:
 
 https://www.raspberrypi.org/forums/viewtopic.php?t=85755
 http://funvision.blogspot.com/2017/01/lbp-cascade-for-head-and-people.html
+
+OpenCV Colour:
+
+https://stackoverflow.com/questions/19189482/color-detection-in-opencv
+https://www.geeksforgeeks.org/detection-specific-colorblue-using-opencv-python/amp/
+https://thecodacus.com/opencv-object-tracking-colour-detection-python/amp/
+https://github.com/howardabrams/opencv-python-xp/blob/master/color-detection.py
+https://www.opencv-srf.com/2010/09/object-detection-using-color-seperation.html?m=1
+https://www.pyimagesearch.com/2016/02/15/determining-object-color-with-opencv/
+https://www.pyimagesearch.com/2014/08/04/opencv-python-color-detection/
