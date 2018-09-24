@@ -16,12 +16,12 @@ Servo servo4;
 Servo servo5;
 Servo servo6;
 
-int servo1pin = 3;
-int servo2pin = 5;
-int servo3pin = 6; 
-int servo4pin = 9;
-int servo5pin = 10;
-int servo6pin = 11;
+const int servo1pin = 3;
+const int servo2pin = 5;
+const int servo3pin = 6; 
+const int servo4pin = 9;
+const int servo5pin = 10;
+const int servo6pin = 11;
 
 const byte maxSerial = 24;
 char fromPi[maxSerial];
@@ -103,7 +103,8 @@ void loop(){
   moveServo(servo6,motor[5]);
   delay(1000);
 
-  
+  //Declaring the movement complete for the Raspberry Pi
+  Serial.println("Ready!");
   
   //delay(1000);
 }
