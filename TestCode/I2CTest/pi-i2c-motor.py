@@ -18,23 +18,40 @@ def main():
     gpio.setmode(gpio.BCM)
     gpio.setup(17, gpio.OUT)
    
-    while 1:
-            gpio.output(17, 1) #turn LED on to show data being sent
-            print "Sending data: ", data1
-            bus.write_byte(address, data1)
-            print "Sending data: ", data2
-            bus.write_byte(address, data2)
-            print "Sending data: ", data3
-            bus.write_byte(address, data3)
-            print "Sending data: ", data4
-            bus.write_byte(address, data4)
-            print "Sending data: ", data5
-            bus.write_byte(address, data5)
-            print "Sending data: ", data6
-            bus.write_byte(address, data6)
-            print "Arduino answer to rPi:", bus.read_byte(address)
+
+    gpio.output(17, 1) #turn LED on to show data being sent
+    print "Sending data: ", data1
+    bus.write_byte(address, data1)
+    print "Arduino received first motor angle:", bus.read_byte(address)
+    time.sleep(0.2)
+    print "Sending data: ", data2
+    bus.write_byte(address, data2)
+    print "Arduino received second motor angle:", bus.read_byte(address)
+    time.sleep(0.2)
+    print "Sending data: ", data3
+    bus.write_byte(address, data3)
+    print "Arduino received third motor angle:", bus.read_byte(address)
+    time.sleep(0.2)
+    print "Sending data: ", data4
+    bus.write_byte(address, data4)
+    print "Arduino received fourth motor angle:", bus.read_byte(address)
+    time.sleep(0.2)
+    print "Sending data: ", data5
+    bus.write_byte(address, data5)
+    print "Arduino received fifth motor angle:", bus.read_byte(address)
+    time.sleep(0.2)
+    print "Sending data: ", data6
+    bus.write_byte(address, data6)
+    print "Arduino received sixth motor angle:", bus.read_byte(address)
+    time.sleep(0.2)
+            
+    while True:
+        if bus.read_byte(address) == 1:
+            print "Arduino is done receiving data"
             gpio.output(17,0) #turn LED off to show data was sent
-            time.sleep(1)
+            gpio.cleanup()
+            break
+    time.sleep(1)
 
     
 
