@@ -24,17 +24,11 @@ Will be built using an acquired aluminum Robotic Arm from Ebay consisting of mot
 
 ```
 - Robot arm brackets
-
 - 6 Servo motors MG 996R
-
 - Joystick will manual control servo motor rotation (left to right, or up and down depending on the orientation - trying to make it intuitive)
-
 - 2 Push buttons will select the next or previous motor in the sequence.
-
 - 2 Push buttons will select course or fine adjustments of the selected motor.
-
 - Pushing on the Joystick will initiate the final motor for grabbing with the claw.
-
 - LCD screen will display current motor selected.
 ```
 
