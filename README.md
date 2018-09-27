@@ -10,24 +10,33 @@ Both Serial and I2C seem viable although I2C has some quirks in terms of timing 
 
 ## Current Progress
 
+Code building blocks for motor control is down. OpenCV will be investigated later after manual robot control is done. 
+
+Physical construction is the present focus
+
 ### Working on
 
-Code building blocks are down.
+**Physical Construction**
 
-Physical construction of robotic arm.
+Will be built using an acquired aluminum Robotic Arm from Ebay consisting of motor brackets, and a clamp claw. Six servo motors are used for six degrees of freedom. 
 
-First stage will consist of a Joystick Module, 4 push buttons, LCD. No Raspberry Pi involved (Raspberry Pi will be used in the final stage for automation to take advantage of its processing capabilities).
+**Materials**
 
-Joystick will manual control servo motor rotation (left to right, or up and down depending on the orientation - trying to make it intuitive)
+```
+- Robot arm brackets
 
-2 Push buttons will select the next or previous motor in the sequence.
+- 6 Servo motors MG 996R
 
-2 Push buttons will select course or fine adjustments of the selected motor.
+- Joystick will manual control servo motor rotation (left to right, or up and down depending on the orientation - trying to make it intuitive)
 
-Pushing on the Joystick will initiate the final motor for grabbing with the claw.
+- 2 Push buttons will select the next or previous motor in the sequence.
 
-LCD screen will display current motor selected.
+- 2 Push buttons will select course or fine adjustments of the selected motor.
 
+- Pushing on the Joystick will initiate the final motor for grabbing with the claw.
+
+- LCD screen will display current motor selected.
+```
 
 
 ### Planned Robot Stages
