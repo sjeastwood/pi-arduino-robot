@@ -8,20 +8,7 @@ An alternative way using the I2C bus was used to send angle inputs one at a time
 
 Both Serial and I2C seem viable although I2C has some quirks in terms of timing issues when adding in print statements for debugging. The bus gets hogged and data can not be sent/retreived. Serial is more simple and seems more stable in terms of awaiting for a ready signal by Arduino when it has completed the motor rotations.
 
-## Current Progress
-
-Code building blocks for motor control is down. OpenCV will be investigated later after manual robot control is done. 
-
-Physical construction is the present focus
-
-### Working on
-
-**Physical Construction**
-
-Will be built using an acquired aluminum Robotic Arm from Ebay consisting of motor brackets, and a clamp claw. Six servo motors are used for six degrees of freedom. 
-
-**Materials**
-
+## Materials
 
 - Robot arm brackets
 - 6 Servo motors MG 996R
@@ -30,8 +17,17 @@ Will be built using an acquired aluminum Robotic Arm from Ebay consisting of mot
 - 2 Push buttons will select course or fine adjustments of the selected motor.
 - Pushing on the Joystick will initiate the final motor for grabbing with the claw.
 - LCD screen will display current motor selected.
+- Later on: Pi Camera to be used with OpenCV for object/colour identification
 
+## Current Progress
 
+Code building blocks for motor control is down. OpenCV will be investigated later after manual robot control is done. 
+
+Physical construction of robot arm and circuit is the present focus
+
+### Physical Construction
+
+Will be built using an acquired aluminum Robotic Arm from Ebay consisting of motor brackets, and a clamp claw. Six servo motors are used for six degrees of freedom. 
 
 ### Planned Robot Stages
 
