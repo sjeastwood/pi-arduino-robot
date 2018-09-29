@@ -21,13 +21,9 @@ Both Serial and I2C seem viable although I2C has some quirks in terms of timing 
 
 ## Current Progress
 
-Code building blocks for motor control is down. OpenCV will be investigated later after manual robot control is done. 
+Physical Construction complete and motors tested.
 
-Physical construction of robot arm and circuit is the present focus
-
-### Physical Construction
-
-Will be built using an acquired aluminum Robotic Arm from Ebay consisting of motor brackets, and a clamp claw. Six servo motors are used for six degrees of freedom. 
+Learning to interface LCD screen, and Joystick with the Arduino
 
 ### Planned Robot Stages
 
