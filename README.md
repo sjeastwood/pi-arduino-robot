@@ -27,11 +27,9 @@ Learning to interface LCD screen, and Joystick with the Arduino
 
 ### Planned Robot Stages
 
-1. Manually moving robot by providing angle of rotation to the motors through python script on raspberry pi
+1. Utilising keyboard and/or joystick + buttons for moving and selecting of motors
 
-2. Utilising keyboard and/or joystick + buttons for moving and selecting of motors
-
-3. Using OpenCV to automate Robot
+2. Using OpenCV to automate Robot
 
 ## Author
 Shane Eastwood
