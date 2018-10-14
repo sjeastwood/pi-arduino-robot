@@ -22,6 +22,7 @@ Both Serial and I2C seem viable although I2C has some quirks in terms of timing 
 ## Current Progress
 
 Physical Construction complete and motors tested.
+Push Button for motor selection completed.
 
 Learning to interface LCD screen, and Joystick with the Arduino
 
