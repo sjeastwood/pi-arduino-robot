@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+
+import serial
+import time
+
+
+arduinoser = serial.Serial('/dev/ttyACM0', 9600)
+complete = "Ready!"
+
+string1 = "120,60,135,90,45,150;"
+string2 = "160,28,80,75,112,135;"
+string3 = "90,120,45,38,27,180;"
+
+def waitOnSerial():
+    except_counter = 0;
+    while True:
+        if arduinoser.inWaiting() > 0:
+            try:
+                confirm = arduinoser.readline()
+                if confirm is complete:
+                    break
+            except serial.serialutil.SerialException:
+                except_counter += 1
+                if except_counter == 10:
+                    except_counter = 0
+                    break
+
+
+
+print("Establishing Serial Connection....")
+time.sleep(2)
+print("Connection Established!")
+
+print("Sending motor co-ordinates " + string1 + "\n")
+arduinoser.write(string1)
+
+waitOnSerial()
+
+print("Movement complete!")
+
+
+print("Sending motor co-ordinates " + string2 + "\n")
+arduinoser.write(string2)
+
+waitOnSerial()
+
+print("Movement complete!")
+
+print("Sending motor co-ordinates " + string3 + "\n")
+arduinoser.write(string3)
+
+

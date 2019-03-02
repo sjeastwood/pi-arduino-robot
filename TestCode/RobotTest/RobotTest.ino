@@ -35,12 +35,21 @@ void setup(){
 
 void loop(){
 
+<<<<<<< HEAD
   moveServo(servo1,50);
   moveServo(servo2,80);
   moveServo(servo3,50);
   moveServo(servo4,30);
   moveServo(servo5,0);
   moveServo(servo6,0);
+=======
+  moveServo(servo1,60);
+  moveServo(servo2,120);
+  moveServo(servo3,60);
+  moveServo(servo4,30);
+  moveServo(servo5,90);
+  moveServo(servo6,40);
+>>>>>>> d8f2f12ead69171c6c8bc71be9b3f6e61b8bd501
   delay(10000);
 
 /*
