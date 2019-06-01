@@ -32,7 +32,15 @@ Note: Using manual control with the mentioned modules requires an Arduino Mega d
 
 1. Utilising keyboard and/or joystick + buttons for moving and selecting of motors
 
-2. Using OpenCV to automate Robot
+2. Using OpenCV to automate Robot to point at a face
+
+3. Getting OpenCV to detect colours
+
+4. Getting Robot on wheels to move towards respective colour
+
+5. Getting Robot to pick up colourss.
+
+6. Voice command
 
 ## Author
 Shane Eastwood
