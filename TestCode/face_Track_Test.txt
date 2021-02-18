@@ -1,0 +1,64 @@
+#include "opencv2/objdetect/objdetect.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+
+#include <ctime>
+#include <iostream>
+#include <raspicam/raspicam_cv.h>
+#include <stdio.h>
+#include <unistd.h>
+
+using namespace cv;
+
+int main()
+{
+  Mat image_big, image;
+  raspicam::RaspiCam_Cv cap;
+  std::vector<Rect> faces;
+  CascadeClassifier face_cascade;
+
+  cap.set(CV_CAP_PROP_FORMAT, CV_8UC3);
+
+  if (!cap.open()) {
+    std::cerr << "Error opening the camera" << std::endl;
+    return -1;
+  }
+
+  sleep(1); // Wait for camera to initialize properly.
+
+  // Load Face cascade (.xml file)
+  face_cascade.load("/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt2.xml");
+
+  clock_t begin = clock();
+  for (int j = 0; j < 1; j++)
+  {
+    cap.grab();
+    cap.retrieve(image_big);
+
+    // Shrink image to be faster
+    image = image_big(Rect(320,240,640,480));
+
+    // Detect faces
+    face_cascade.detectMultiScale(image, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(30, 30));
+
+    // Draw circles on the detected faces
+    if (j == 0)
+    {
+      for (int i = 0; i < faces.size(); i++)
+      {
+        Point center(faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5);
+        ellipse(image, center, Size(faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
+        std::cout << "Face " << i << " Size: " << Size(faces[i].width*0.5, faces[i].height*0.5);
+        std::cout << " Location: (" << center.x << ", " << center.y <<")\n";
+      }
+      imwrite("output.jpg", image);
+    }
+  }
+  clock_t end = clock();
+
+  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+
+  std::cout << "Total time: " << elapsed_secs << "\n";
+
+  return 0;
+}

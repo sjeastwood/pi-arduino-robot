@@ -1,0 +1,49 @@
+#ifndef FACETRACK_H
+#define FACETRACK_H
+
+#include "opencv2/objdetect/objdetect.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+
+#include <raspicam/raspicam_cv.h>
+
+#include "motor.h"
+
+#define H_RESOLUTION 640
+#define V_RESOLUTION 480
+#define H_OFFSET 320
+#define V_OFFSET 240
+
+// Used to store pixel location of faces
+struct FaceLoc {
+  int x;
+  int y;
+  double dist;
+};
+
+class Facetrack {
+public:
+
+  // Must be called before any other functions. Initializes camera and
+  // cascade classifier used by other functions.
+  void initialize();
+
+  // Finds faces from a camera frame and returns it as a StepTarget vector
+  std::vector<StepTarget> findFaces();
+
+  // Default constructor is fine for this
+  // Facetrack();
+
+  ~Facetrack() {
+    camera.release();
+  }
+
+private:
+  cv::Mat image_big;
+  cv::Mat image;
+  cv::CascadeClassifier face_cascade;
+  raspicam::RaspiCam_Cv camera;
+
+  StepTarget convertPixelToStep(FaceLoc loc);
+};
+#endif //FACETRACK_H

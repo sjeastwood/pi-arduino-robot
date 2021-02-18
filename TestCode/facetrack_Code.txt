@@ -1,0 +1,115 @@
+#include "facetrack.h"
+
+#include <cmath>
+#include <iostream>
+#include <raspicam/raspicam_cv.h>
+#include <stdio.h>
+#include <unistd.h>
+
+using namespace cv;
+
+void Facetrack::initialize()
+{
+
+  camera.set(CV_CAP_PROP_FORMAT, CV_8UC3);
+  if (!camera.open()) {
+    std::cerr << "Error opening the camera" << std::endl;
+    return;
+  }
+
+  // Load Face cascade (.xml file)
+  face_cascade.load("/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt2.xml");
+
+  // Wait for camera to initialize properly
+  usleep(100000);
+}
+
+StepTarget Facetrack::convertPixelToStep(FaceLoc loc)
+{
+    const double pi = 4 * atan(1);
+    const double horizontal_FOV = 53.5 * pi / 180; //converts horizontal field of view into
+                                                    //radians -- taken from the raspberry pi camera data sheet
+    const double vertical_FOV = 41.41 * pi / 180; //converts vertical field of view into radians
+                                                    //--taken from the raspberry pi data sheet
+    
+    const double camOffset = 0.05; //assuming 5cm offset of LED array from camera vertically
+                                    //assuming all distances calculated from facetrack will be in metric
+    //conversion factors
+    const double H_radperpixel = horizontal_FOV/H_RESOLUTION; // divides by horizontal pixels
+    const double V_radperpixel = vertical_FOV/V_RESOLUTION; // divides by vertical pixels
+    
+    double v_angle , h_angle, cam_angle;
+    int v_steps, h_steps;
+    
+    double base_angle, h_dist, v_dist;
+    
+    StepTarget moveToTarget;
+    
+    //horizontal motor rotation
+    
+    h_angle = H_radperpixel * loc.x;
+    
+    h_steps = (int)floor(h_angle + 0.5) * (STEPS_PER_REVOLUTION / ( 2 * pi));
+    
+    //vertical motor rotation
+    
+    cam_angle = V_radperpixel * loc.y;
+    
+    //first check if face is above or below center of view for camera vertically
+    //could also test cam_angle > or < vertical_FOV/2
+    
+    if (loc.y != V_RESOLUTION/2) //face is above or below center of view ypixel
+    {
+        
+        base_angle = vertical_FOV/2 - cam_angle; //finds angle of face with respect to
+                                                    //camera center of view
+        
+        h_dist = loc.dist * cos(base_angle);
+        v_dist = loc.dist * sin(base_angle);
+        
+        v_angle = atan((camOffset-v_dist)/h_dist);
+    }    
+    else //face is at the center of view
+    {
+        v_angle = atan(camOffset/loc.dist);
+    }
+    
+    
+    v_steps = (int)floor(v_angle + 0.5) *  (STEPS_PER_REVOLUTION / ( 2 * pi));
+    
+    moveToTarget.hStep = h_steps;
+    moveToTarget.vStep = v_steps;
+    
+    return moveToTarget;
+}
+
+std::vector<StepTarget> Facetrack::findFaces()
+{
+  FaceLoc loc;
+  std::vector<StepTarget> faceLocs;
+  std::vector<Rect> faces;
+
+  // Get frame from camera
+  camera.grab();
+  camera.retrieve(image_big);
+
+  // Shrink image to be faster
+  image = image_big(Rect(H_OFFSET,V_OFFSET,H_RESOLUTION,V_RESOLUTION));
+
+  // Actually detect faces
+  face_cascade.detectMultiScale(image, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(30, 30));
+
+  // Return the detected faces
+  for (int i = 0; i < faces.size(); i++)
+  {
+    loc.x = faces[i].x + faces[i].width*0.5 + H_OFFSET;
+    loc.y = faces[i].y + faces[i].height*0.5 + V_OFFSET;
+
+    // Distance estimate equation determined experimentally
+    loc.dist = 106.41/(faces[i].width*0.5);
+
+    faceLocs.push_back(convertPixelToStep(loc));
+  }
+
+  return faceLocs;
+}
